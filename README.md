@@ -189,6 +189,7 @@ Tests run automatically on every push using GitHub Actions (Chrome, headless). T
 - Social media links open in a new tab on external domains, so the tests verify the link target (`href`) and `target="_blank"` instead of following the redirect.
 - The demo server returns `504 Gateway Time-out` when a valid username is submitted on Forgot Password (email is not configured), so that test stubs the server response and verifies the request sent by the client.
 - The OrangeHRM demo is a shared public environment; data is reset periodically and availability can vary, which may cause occasional flaky results.
+- CI runs against a shared public demo that is sometimes unreachable from GitHub-hosted runners; in that case Cypress fails before any test starts. Re-running the workflow usually resolves it.
 
 ## Learning Outcomes
 
