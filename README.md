@@ -169,7 +169,7 @@ The report includes pass/fail charts and embedded screenshots for failed tests.
 
 Tests run automatically on every push using GitHub Actions (Chrome, headless). The HTML report and failure screenshots are uploaded as workflow artifacts.
 
-**Latest CI run:** 76 passed, 0 failed, 0 pending, 0 skipped.
+**Example successful CI run:** 76 passed, 0 failed, 0 pending, 0 skipped.
 
 ![GitHub Actions passing](img/ci-passing.png)
 

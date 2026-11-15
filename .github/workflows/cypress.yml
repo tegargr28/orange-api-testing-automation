@@ -3,8 +3,18 @@ name: Cypress E2E
 on:
   push:
     branches: [main]
+    paths-ignore:
+      - "**.md"
+      - "img/**"
   pull_request:
+    paths-ignore:
+      - "**.md"
+      - "img/**"
   workflow_dispatch:
+
+concurrency:
+  group: cypress-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   cypress-run:
