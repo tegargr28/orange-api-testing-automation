@@ -1,0 +1,5 @@
+{
+  "newEmployee": { "firstName": "Tegar", "middleName": "QA" },
+  "searchNotFound": "zzzzqqqxxx",
+  "specialChars": "<>'\";--"
+}

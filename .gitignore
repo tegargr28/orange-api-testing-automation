@@ -1,0 +1,18 @@
+# Dependencies
+node_modules/
+
+# Cypress artifacts
+cypress/screenshots/
+cypress/videos/
+cypress/downloads/
+cypress/reports/
+cypress.env.json
+
+# Logs & temp
+*.log
+*.tmp
+
+# OS / Editor
+.DS_Store
+Thumbs.db
+.vscode/
