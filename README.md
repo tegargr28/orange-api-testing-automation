@@ -39,7 +39,7 @@ This project was developed through self-directed learning and practical testing 
 | | **Total** | | **76** |
 
 ### 1. Authentication
-- Login with valid / invalid username / invalid password
+- Login with valid credentials, invalid username, and invalid password
 - Required-field validation (empty username, empty password, both empty)
 - Password masking and case sensitivity
 - Form reset after refresh
@@ -47,7 +47,7 @@ This project was developed through self-directed learning and practical testing 
 
 ### 2. Forgot Password
 - Open page and verify instructions
-- Reset with valid username
+- Submit reset request with valid username (server response stubbed, see [Limitations](#limitations))
 - Required-field validation
 - Cancel redirects to login
 - Field cleared after refresh
@@ -116,6 +116,7 @@ orange-api-testing-automation/
 │       ├── pages/                    # Page Object Model classes
 │       ├── commands.js               # Custom commands (login, getInputByLabel, ...)
 │       └── e2e.js                    # Global config & reporter registration
+├── img/                              # Screenshots used in this README
 ├── cypress.config.js
 ├── package.json
 └── README.md
@@ -156,19 +157,26 @@ cypress/reports/index.html
 
 The report includes pass/fail charts and embedded screenshots for failed tests.
 
-### Screenshot
+### Latest Local Run
 
-<!-- Add your own screenshot after running the tests, e.g. img/cypress-run.png -->
-![Cypress run result](img/cypress-run.png)
+**76 tests, 76 passing, 0 failing** (10 specs, Microsoft Edge, headless run in about 5 minutes).
+
+![Cypress HTML report](img/cypress-run.png)
+
+![Terminal summary](img/terminal-summary.png)
 
 ## CI/CD
 
-Tests run automatically on every push and pull request using GitHub Actions. The HTML report and failure screenshots are uploaded as workflow artifacts.
+Tests run automatically on every push using GitHub Actions (Chrome, headless). The HTML report and failure screenshots are uploaded as workflow artifacts.
+
+**Latest CI run:** 76 passed, 0 failed, 0 pending, 0 skipped.
+
+![GitHub Actions passing](img/ci-passing.png)
 
 ## Key Practices Applied
 
 - **Page Object Model** to separate locators/actions from test logic
-- **Custom commands + `cy.session`** for fast, cached login
+- **Custom commands + `cy.session`** for fast, cached login with session validation
 - **Data-driven tests** for widgets and sidebar menus
 - **Fixtures** for test data instead of hard-coded values
 - **Network validation** with `cy.intercept` and `cy.request`
@@ -179,6 +187,7 @@ Tests run automatically on every push and pull request using GitHub Actions. The
 ## Limitations
 
 - Social media links open in a new tab on external domains, so the tests verify the link target (`href`) and `target="_blank"` instead of following the redirect.
+- The demo server returns `504 Gateway Time-out` when a valid username is submitted on Forgot Password (email is not configured), so that test stubs the server response and verifies the request sent by the client.
 - The OrangeHRM demo is a shared public environment; data is reset periodically and availability can vary, which may cause occasional flaky results.
 
 ## Learning Outcomes
